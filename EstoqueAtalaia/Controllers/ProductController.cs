@@ -26,6 +26,7 @@ namespace EstoqueAtalaia.Controllers
                             .AsNoTracking();
 
             ViewBag.Qtde = product.Sum(x => x.Qtde);
+            ViewBag.ValorTotal = product.Sum(x => x.ValorTotal);
             return View(await product.ToListAsync());
         }
 
@@ -55,7 +56,7 @@ namespace EstoqueAtalaia.Controllers
                 }
                 else
                 {
-                    product.Price = (product.Price * 2) + 15;
+                    product.ValorTotal = (product.Price * product.Qtde);
                     _context.Add(product);
                     await _context.SaveChangesAsync();
                     return RedirectToAction("Index");

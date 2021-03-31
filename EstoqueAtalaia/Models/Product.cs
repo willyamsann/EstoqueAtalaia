@@ -25,5 +25,7 @@ namespace EstoqueAtalaia.Models
 
         public Brand Brand { get; set; }
 
+        public double ValorTotal { get; set; }
+
     }
 }

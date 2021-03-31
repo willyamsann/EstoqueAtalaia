@@ -12,6 +12,8 @@ namespace EstoqueAtalaia.Models
 
         public DbSet<ProductOutput> ProductOutputs { get; set; }
 
+        public DbSet<OrdemDeServico> OrdemDeServicos { get; set; }
+
         public Context(DbContextOptions<Context> options) : base(options)
         {
 

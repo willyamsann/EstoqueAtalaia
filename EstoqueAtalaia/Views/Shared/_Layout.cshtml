@@ -7,27 +7,51 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
+<style>
+    * {
+        transition: all 0.3s ease-in-out;
+    }
+
+    .container {
+        clear: both;
+        overflow: auto;
+    }
+
+    nav {
+        float: right;
+    }
+
+    .logo img {
+        float: left;
+    }
+
+    ul li {
+        display: inline-block;
+        padding: 10px;
+        font-size: 20px;
+        font-family: raleway;
+    }
+
+        ul li:hover {
+            color: orange;
+        }
+</style>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">EstoqueAtalaia</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+    <header style="background: black;">
+        <div class="container">
+            <div class="logo" style="background: black;">
+                <img src="~/img/IMG-20190314-WA0049.jpg" alt="" width="100" />
             </div>
-        </nav>
+            <nav style="background: black;">
+                <ul>
+                    <li style="color:white;">Estoque</li>
+                    <li style="color:white;">Saida</li>
+                    <li style="color:white;">Entrada</li>
+                    <li style="color:white;">Clientes</li>
+                </ul>
+            </nav>
+        </div>
+        <hr />
     </header>
     <div class="container">
         <main role="main" class="pb-3">

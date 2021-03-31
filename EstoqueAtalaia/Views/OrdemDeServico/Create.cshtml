@@ -1,0 +1,88 @@
+﻿@model EstoqueAtalaia.Models.OrdemDeServico
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>OrdemDeServico</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NameCliente" class="control-label"></label>
+                <input asp-for="NameCliente" class="form-control" />
+                <span asp-validation-for="NameCliente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmailCliente" class="control-label"></label>
+                <input asp-for="EmailCliente" class="form-control" />
+                <span asp-validation-for="EmailCliente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TelefoneCliente" class="control-label"></label>
+                <input asp-for="TelefoneCliente" class="form-control" />
+                <span asp-validation-for="TelefoneCliente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Aparelho" class="control-label"></label>
+                <input asp-for="Aparelho" class="form-control" />
+                <span asp-validation-for="Aparelho" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Detalhes" class="control-label"></label>
+                <input asp-for="Detalhes" class="form-control" />
+                <span asp-validation-for="Detalhes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Reclamacao" class="control-label"></label>
+                <input asp-for="Reclamacao" class="form-control" />
+                <span asp-validation-for="Reclamacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Diagnostico" class="control-label"></label>
+                <input asp-for="Diagnostico" class="form-control" />
+                <span asp-validation-for="Diagnostico" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Garantia" class="control-label"></label>
+                <input asp-for="Garantia" class="form-control" />
+                <span asp-validation-for="Garantia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValorServico" class="control-label"></label>
+                <input asp-for="ValorServico" class="form-control" />
+                <span asp-validation-for="ValorServico" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValorPeca" class="control-label"></label>
+                <input asp-for="ValorPeca" class="form-control" />
+                <span asp-validation-for="ValorPeca" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValorTotal" class="control-label"></label>
+                <input asp-for="ValorTotal" class="form-control" />
+                <span asp-validation-for="ValorTotal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataAbertura" class="control-label"></label>
+                <input asp-for="DataAbertura" class="form-control" />
+                <span asp-validation-for="DataAbertura" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

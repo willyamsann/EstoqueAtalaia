@@ -4,92 +4,113 @@
     ViewData["Title"] = "Index";
 }
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<h1>Estoque</h1>
+<h1>Estoque MedTech</h1>
 
 <p>
-    <a asp-action="Create">Criar Novo</a>
+    <a asp-action="Create" class="btn btn-success">Criar Novo</a>
 </p>
-<h5>Quantidade Total = @ViewBag.Qtde</h5>
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
-<table class="table"  id="myTable">
+
+    <button type="button" class="btn btn-primary">
+        Quantidade Total <span class="badge badge-light">@ViewBag.Qtde</span>
+    </button>
+    <br />
+    <br />
+    <button type="button" class="btn btn-primary">
+        Valor Total <span class="badge badge-light">R$ @ViewBag.ValorTotal</span>
+    </button>
+
+<br />
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Procurar..">
+<table class="table" id="myTable">
     <thead>
         <tr class="header">
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                Nome
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                Descrição
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+                Preço
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Qtde)
+                Quantidade
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Category)
+                Valor Total
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Brand)
+                Categoria
+            </th>
+            <th>
+                Marca
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Qtde)
-            </td>
-            <td>
-             @Html.DisplayFor(modelItem => item.Category.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Brand.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                <a asp-action="Create" asp-controller="ProductOutput" asp-route-id="@item.Id">Saida</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    R$  @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Qtde)
+                </td>
+                <td>
+                    @{
+                        double valorTotal = 0;
+                        valorTotal = item.Qtde * item.Price;
+                        @valorTotal
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Brand.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a> 
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a> 
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a> 
+                    <a asp-action="Create" asp-controller="ProductOutput" asp-route-id="@item.Id" class="btn btn-info">Saida</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 
 
 <script>
-function myFunction() {
-  // Declare variables
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
+    function myFunction() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
 
-  // Loop through all table rows, and hide those who don't match the search query
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
     }
-  }
-}
 </script>
 
 <style>
