@@ -1,0 +1,170 @@
+﻿@model EstoqueAtalaia.Models.OrdemDeServico
+
+@{
+    ViewData["Title"] = "Ordem";
+}
+
+<h1>Ordem</h1>
+<style>
+    body {
+        padding: 50px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .receipt-main {
+        display: inline-block;
+        width: 100%;
+        padding: 15px;
+        font-size: 12px;
+        border: 1px solid #000;
+    }
+
+    .receipt-title {
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 20px;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    .receipt-label {
+        font-weight: 600;
+    }
+
+    .text-large {
+        font-size: 16px;
+    }
+
+    .receipt-section {
+        margin-top: 10px;
+    }
+
+    .receipt-footer {
+        text-align: center;
+        background: #ff0000;
+    }
+
+    .receipt-signature {
+        height: 80px;
+        margin: 50px 0;
+        padding: 0 50px;
+        background: #fff;
+    }
+
+        .receipt-signature .receipt-line {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #000;
+        }
+
+        .receipt-signature p {
+            text-align: center;
+            margin: 0;
+        }
+</style>
+<div class="receipt-main">
+    <center>
+        <img src="~/img/IMG-20190314-WA0049.jpg" width="70px" />
+        <h3>Assistência Técnica Especializada MedTech</h3>
+    </center>
+
+    <p class="receipt-title">Ordem de Serviço </p>
+
+    <div class="receipt-section pull-left">
+        <span class="receipt-label text-large">Número:</span>
+        <span class="text-large">@Model.Id</span>
+    </div>
+
+    <div class="pull-right receipt-section">
+        <span class="text-large receipt-label">Data Abertura</span>
+        <span class="text-large">@Model.DataAbertura</span>
+    </div>
+    <hr />
+    <h6>Dados do Cliente</h6>
+    <div class="clearfix"></div>
+
+    <div class="receipt-section">
+        <span class="receipt-label">Cliente:</span>
+        <span>@Model.NameCliente</span>
+    </div>
+    <div class="receipt-section">
+        <span class="receipt-label">Telefone:</span>
+        <span>@Model.TelefoneCliente</span>
+    </div>
+    <div class="receipt-section">
+        <span class="receipt-label">Emaiil:</span>
+        <span>@Model.EmailCliente</span>
+    </div>
+
+    <hr />
+    <h6>Informações do Aparelho</h6>
+
+    <div class="receipt-section">
+        <span class="receipt-label">Aparelho:</span>
+        <span>@Model.Aparelho</span>
+    </div>
+    <div class="receipt-section">
+        <span class="receipt-label">IMEI:</span>
+        <span>@Model.IMEI</span>
+    </div>
+    <div class="receipt-section">
+        <span class="receipt-label">Detalhes:</span>
+        <span>@Model.Detalhes</span>
+    </div>
+    <div class="receipt-section">
+        <span class="receipt-label">CheckList:</span>
+        <span>@Model.CheckList</span>
+    </div>
+    <hr />
+    <h6>Reclamação</h6>
+    <p>@Model.Reclamacao</p>
+    <hr />
+    <h6>Diagnostico</h6>
+    <p>@Model.Diagnostico</p>
+    <hr />
+    <h6>Garantia</h6>
+    <p>@Model.Garantia</p>
+
+    <hr />
+    <h6>Orçamento</h6>
+    <div class="receipt-section">
+        <span class="receipt-label">Valor Serviço:</span>
+        <span>R$ @Model.ValorServico</span>
+    </div>
+    <div class="receipt-section">
+        <span class="receipt-label">Valor Peça:</span>
+        <span>R$ @Model.ValorPeca</span>
+    </div>
+    <div class="receipt-section">
+        <span class="receipt-label">Valor Total:</span>
+        <span>R$ @Model.ValorTotal</span>
+    </div>
+    <div class="receipt-section">
+        <span class="receipt-label">Sinal:</span>
+        <span>R$ @Model.Sinal</span>
+    </div>
+
+    <div class="receipt-section">
+        <span class="receipt-label">Restante:</span>
+        <span>R$ @Model.Sinal</span>
+    </div>
+
+
+
+    <div class="clearfix"></div>
+
+    <div class="receipt-signature col-xs-6">
+        <p class="receipt-line"></p>
+        <p>MedTEch</p>
+        <p>41.254.455/0001-00</p>
+        <p>Rua Atalia, 3456 - Jd. das Cerejeiras</p>
+        <p>Recife - AL - 09889-349</p>
+    </div>
+
+    <div class="receipt-signature col-xs-6">
+        <p class="receipt-line"></p>
+        <p>@Model.NameCliente</p>
+    </div>
+</div>

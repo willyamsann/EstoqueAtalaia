@@ -90,6 +90,18 @@ namespace EstoqueAtalaia.Controllers
             }
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult FilterDate(DateTime DateInitial,DateTime DateFinal)
+        {
+            var resume = _context.ProductOutputs
+                           .Include("Product")
+                           .Where(x => x.DateTime >= DateInitial && x.DateTime <= DateFinal)
+                           .AsNoTracking();
+
+            return View(resume);
+        }
+
         // GET: ProductOutputController/Delete/5
         public ActionResult Delete(int id)
         {

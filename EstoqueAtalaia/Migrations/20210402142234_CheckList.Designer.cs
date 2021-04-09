@@ -4,14 +4,16 @@ using EstoqueAtalaia.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EstoqueAtalaia.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20210402142234_CheckList")]
+    partial class CheckList
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,21 +54,6 @@ namespace EstoqueAtalaia.Migrations
                     b.ToTable("Categorys");
                 });
 
-            modelBuilder.Entity("EstoqueAtalaia.Models.CheckList", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("CheckLists");
-                });
-
             modelBuilder.Entity("EstoqueAtalaia.Models.OrdemDeServico", b =>
                 {
                     b.Property<int>("Id")
@@ -95,20 +82,11 @@ namespace EstoqueAtalaia.Migrations
                     b.Property<string>("Garantia")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("IMEI")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("NameCliente")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Reclamacao")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<float>("Resta")
-                        .HasColumnType("real");
-
-                    b.Property<float>("Sinal")
-                        .HasColumnType("real");
 
                     b.Property<string>("TelefoneCliente")
                         .HasColumnType("nvarchar(max)");

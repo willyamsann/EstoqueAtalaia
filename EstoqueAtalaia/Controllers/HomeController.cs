@@ -12,15 +12,18 @@ namespace EstoqueAtalaia.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly Context _context;
 
-        public HomeController(ILogger<HomeController> logger)
+
+        public HomeController(ILogger<HomeController> logger, Context context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "Product", new { area = "Product" });
         }
 
         public IActionResult Privacy()
@@ -33,5 +36,8 @@ namespace EstoqueAtalaia.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+      
     }
 }
+

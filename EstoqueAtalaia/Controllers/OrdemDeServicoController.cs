@@ -1,4 +1,5 @@
 ﻿using EstoqueAtalaia.Models;
+using EstoqueAtalaia.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -27,17 +28,33 @@ namespace EstoqueAtalaia.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            var listKiko = _context.CheckLists
+                          .ToList();
+
+
+            List<string> listCheck = new List<string>();
+
+            foreach(var item in listKiko)
+            {
+                listCheck.Add(item.Name);
+            }
+           
+
+            return View( new OrdemDeServicoViewModel() { checks = listCheck });
         }
 
         // POST: ProductController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(OrdemDeServico os)
+        public async Task<IActionResult> Create(OrdemDeServico os, IEnumerable<string> check)
         {
             if (ModelState.IsValid)
             {
-             
+                foreach(var item in check)
+                {
+                    os.CheckList += item + ",";
+                }
+                os.DataAbertura = DateTime.Now;
                     _context.Add(os);
                     await _context.SaveChangesAsync();
                     return RedirectToAction("Index");
@@ -48,6 +65,13 @@ namespace EstoqueAtalaia.Controllers
                 return View(os);
             }
            
+        }
+
+        public async Task<IActionResult> Ordem(int id)
+        {
+            var ordem = _context.OrdemDeServicos.Find(id);
+
+            return View(ordem);
         }
 
     }

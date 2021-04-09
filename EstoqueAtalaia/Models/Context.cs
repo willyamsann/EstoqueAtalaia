@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using EstoqueAtalaia.ViewModel;
 
 namespace EstoqueAtalaia.Models
 {
@@ -14,10 +15,16 @@ namespace EstoqueAtalaia.Models
 
         public DbSet<OrdemDeServico> OrdemDeServicos { get; set; }
 
+        public DbSet<User> Users { get; set; }
+
+        public DbSet<CheckList> CheckLists { get; set; }
+
         public Context(DbContextOptions<Context> options) : base(options)
         {
 
         }
+
+        public DbSet<EstoqueAtalaia.ViewModel.OrdemDeServicoViewModel> OrdemDeServicoViewModel { get; set; }
 
     }
 }

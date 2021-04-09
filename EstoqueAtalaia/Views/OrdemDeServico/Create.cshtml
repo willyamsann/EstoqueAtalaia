@@ -1,4 +1,4 @@
-﻿@model EstoqueAtalaia.Models.OrdemDeServico
+﻿@model EstoqueAtalaia.ViewModel.OrdemDeServicoViewModel
 
 @{
     ViewData["Title"] = "Create";
@@ -9,7 +9,7 @@
 <h4>OrdemDeServico</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -32,6 +32,30 @@
                 <input asp-for="Aparelho" class="form-control" />
                 <span asp-validation-for="Aparelho" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="IMEI" class="control-label"></label>
+                <input asp-for="IMEI" class="form-control" />
+                <span asp-validation-for="IMEI" class="text-danger"></span>
+            </div>
+
+            <div class="row">
+                @foreach (var check in Model.checks)
+                {
+                    <div class="col-md-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="check[]" value="@check" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                @check
+                            </label>
+                        </div>
+                        <br />
+                    </div>
+
+                }
+
+
+            </div>
+
             <div class="form-group">
                 <label asp-for="Detalhes" class="control-label"></label>
                 <input asp-for="Detalhes" class="form-control" />
@@ -68,10 +92,16 @@
                 <span asp-validation-for="ValorTotal" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DataAbertura" class="control-label"></label>
-                <input asp-for="DataAbertura" class="form-control" />
-                <span asp-validation-for="DataAbertura" class="text-danger"></span>
+                <label asp-for="Sinal" class="control-label"></label>
+                <input asp-for="Sinal" class="form-control" />
+                <span asp-validation-for="Sinal" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="Resta" class="control-label"></label>
+                <input asp-for="Resta" class="form-control" />
+                <span asp-validation-for="Resta" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -80,9 +110,5 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-primary">Voltar para a Lista</a>
 </div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

@@ -1,8 +1,13 @@
-﻿using System;
+﻿using EstoqueAtalaia.Models;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace EstoqueAtalaia.Models
+namespace EstoqueAtalaia.ViewModel
 {
-    public class OrdemDeServico
+    public class OrdemDeServicoViewModel
     {
         public new int Id { get; set; }
 
@@ -37,7 +42,9 @@ namespace EstoqueAtalaia.Models
 
         public string CheckList { get; set; }
 
-        public DateTime DataAbertura { get; set; }
+        [NotMapped]
+        public IEnumerable<string> checks { get; set; }
 
+        public DateTime DataAbertura { get; set; }
     }
 }
